@@ -34,7 +34,7 @@ public final class PostgresqlVehicleRepository implements VehicleRepository {
     @Override
     public Optional<Vehicle> findById(final String id) {
         final List<Vehicle> results = jdbc.query(
-                "SELECT data FROM vehicle WHERE id = :id",
+                "",
                 new MapSqlParameterSource("id", id),
                 this::mapRow
         );
@@ -43,7 +43,7 @@ public final class PostgresqlVehicleRepository implements VehicleRepository {
 
     @Override
     public List<Vehicle> findAll() {
-        return jdbc.query("SELECT data FROM vehicle", this::mapRow);
+        return jdbc.query("", this::mapRow);
     }
 
     private Vehicle mapRow(final ResultSet rs, final int rowNum) throws SQLException {
